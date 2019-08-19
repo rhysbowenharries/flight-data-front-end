@@ -3,6 +3,7 @@ import FlightList from '../components/FlightList.js'
 import AverageJourneyTimeCalculator from '../components/AverageJourneyTimeCalculator'
 import ManchesterBusyestDay from '../components/ManchesterBusyestDay'
 import ProportionFlightsBusinessClass from '../components/ProportionFlightsBusinessClass'
+import ProportionFlightsIntoSweden  from '../components/ProportionFlightsIntoSweden'
 
 class FlightDataContainer extends React.Component {
 
@@ -22,7 +23,7 @@ console.log('This happens 1st.');
 
 
   componentDidMount() {
-    const url = 'http://localhost:8080/flights/';
+    const url = 'http://localhost:8080/flights/all';
     const urlLHRtoDXB = 'http://localhost:8080/flights/from/LHR/to/DXB'
     const urlMAN = 'http://localhost:8080/flights/from/MAN'
 
@@ -61,8 +62,7 @@ console.log('This happens 1st.');
 
 
   render(){
-    console.log(this.state.flightsMAN);
-console.log(this.state.flightsLHRtoDXB);
+
 
     if (this.state.loading === 'initial') {
       console.log('This happens 2nd - after the class is constructed. You will not see this element because React is still computing changes to the DOM.');
@@ -90,6 +90,10 @@ console.log(this.state.flightsLHRtoDXB);
         <div>
           <h2>Proportion of flights Business Class</h2>
           <ProportionFlightsBusinessClass data={this.state.flights}/>
+        </div>
+        <div>
+          <h2>Proportion ofFlights in to Sweden</h2>
+          <ProportionFlightsIntoSweden data={this.state.flights}/>
         </div>
       </Fragment>
     );

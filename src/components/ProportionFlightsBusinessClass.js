@@ -5,17 +5,27 @@ class ProportionFlightsBusinessClass extends Component {
   render() {
 
 
-      const flightsTotal = this.props.data.page.totalElements
-      console.log('Flights total',flightsTotal);
-      console.log('data',this.props.data);
+      const flightsTotal = this.props.data.length
+      const flightClassArray = this.props.data.map(flight => {
+        const flightClass = flight.outflightclass
+        return flightClass
+      })
+
+      let businessCount = 0;
+      for(var i = 0; i < flightClassArray.length; ++i){
+          if(flightClassArray[i] === "Business")
+              businessCount++;
+      }
+      console.log('businessCount',businessCount);
 
 
-
+      let businessPercent = Math.floor(businessCount*100/flightsTotal);
+      console.log(businessPercent);
 
 
     return (
       <div className="ProportionFlighsBusiness">
-
+        <h3>{businessPercent}%</h3>
 
       </div>
     )
@@ -23,7 +33,3 @@ class ProportionFlightsBusinessClass extends Component {
 }
 
 export default ProportionFlightsBusinessClass;
-// (flight => {
-//     const total = flight.length()
-//     console.log(total);
-//   });

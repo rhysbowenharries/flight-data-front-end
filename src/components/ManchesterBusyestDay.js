@@ -12,7 +12,7 @@ class ManchesterBusyestDay extends Component {
     })
 
     function busiestDayCalucator(indexedDays) {
-      if(indexedDays.length == 0)
+      if(indexedDays.length === 0)
       return null;
       var modeMap = {};
       var maxEl = indexedDays[0], maxCount = 1;
