@@ -27,13 +27,11 @@ console.log('This happens 1st.');
     const urlLHRtoDXB = 'http://localhost:8080/flights/from/LHR/to/DXB'
     const urlMAN = 'http://localhost:8080/flights/from/MAN'
 
-      console.log('This happens 3rd.');
 
       this.setState({ loading: 'true' });
       fetch(urlLHRtoDXB)
         .then(res => res.json())
         .then((flightsLHRtoDXB) => {
-        console.log('This happens LATERth.');
         this.setState({flightsLHRtoDXB: flightsLHRtoDXB,})
       })
       .catch(err => console.error);
@@ -42,7 +40,6 @@ console.log('This happens 1st.');
       fetch(urlMAN)
         .then(res => res.json())
         .then((flightsMAN) => {
-        console.log('This happens LATERth.');
         this.setState({flightsMAN: flightsMAN,})
       })
       .catch(err => console.error);
@@ -51,7 +48,6 @@ console.log('This happens 1st.');
       fetch(url)
         .then(res => res.json())
         .then((flights) => {
-        console.log('This happens 7th.');
         this.setState({flights: flights,loading: 'false'})
       })
       .catch(err => console.error);
@@ -65,12 +61,10 @@ console.log('This happens 1st.');
 
 
     if (this.state.loading === 'initial') {
-      console.log('This happens 2nd - after the class is constructed. You will not see this element because React is still computing changes to the DOM.');
       return <h2>Intializing...</h2>;
     }
 
     if (this.state.loading === 'true') {
-      console.log('This happens 5th - when waiting for data.');
       return <h2>Loading...</h2>;
     }
 
